@@ -6,4 +6,8 @@ if [[ -n "${DEBUG}" ]]; then
   set -x
 fi
 
-gosu kibana "${@}"
+if [[ "${1}" == 'make' ]]; then
+    gosu kibana "${@}" -f /usr/local/bin/actions.mk
+else
+    gosu kibana "${@}"
+fi

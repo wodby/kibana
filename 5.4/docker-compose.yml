@@ -1,0 +1,10 @@
+version: "2"
+
+services:
+  elasticsearch:
+    image: wodby/elasticsearch:5.4
+
+  kibana:
+    image: $IMAGE
+    depends_on:
+      - elasticsearch
