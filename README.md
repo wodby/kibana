@@ -21,13 +21,14 @@ default params values:
     host localhost
     max_try 1
     wait_seconds 1
+    delay_seconds 1
 ```
 
 Examples:
 
 ```bash
 # Wait for Kibana to start
-docker exec -ti [ID] make check-ready max_try=10 wait_seconds=3 -f /usr/local/bin/actions.mk
+docker exec -ti [ID] make check-ready max_try=30 wait_seconds=10 delay_seconds=60 -f /usr/local/bin/actions.mk
 ```
 
 ## Using in production
