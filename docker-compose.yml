@@ -2,7 +2,11 @@ version: "2"
 
 services:
   elasticsearch:
-    image: wodby/elasticsearch:5.4
+    image: wodby/elasticsearch:$ES_VER
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
 
   kibana:
     image: $IMAGE

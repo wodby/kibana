@@ -3,11 +3,11 @@
 set -e
 
 if [[ -n "${DEBUG}" ]]; then
-  set -x
+    set -x
 fi
 
 if [[ "${1}" == 'make' ]]; then
-    gosu kibana "${@}" -f /usr/local/bin/actions.mk
+    exec "${@}" -f /usr/local/bin/actions.mk
 else
-    gosu kibana "${@}"
+    exec "${@}"
 fi
