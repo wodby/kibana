@@ -32,7 +32,7 @@ RUN set -ex; \
     \
     # Unpack.
     mkdir -p /usr/share/kibana/node/bin; \
-    tar zxvf kibana.tar.gz --strip-components=1 -C /usr/share/kibana; \
+    tar zx kibana.tar.gz --strip-components=1 -C /usr/share/kibana; \
     ln -sf /usr/bin/node /usr/share/kibana/node/bin/node; \
     chown -R kibana:kibana /usr/share/kibana; \
     \
