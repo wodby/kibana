@@ -1,6 +1,6 @@
 -include env_make
 
-KIBANA_VER ?= 6.1.1
+KIBANA_VER ?= 6.1.2
 
 MINOR_VER=$(shell echo "${KIBANA_VER}" | grep -oE '^[0-9]+\.[0-9]+?')
 
