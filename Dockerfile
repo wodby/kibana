@@ -1,11 +1,8 @@
-FROM wodby/alpine:3.7-1.1.1
+FROM wodby/alpine:3.6-1.2.0
 
 ARG KIBANA_VER
 
 ENV KIBANA_VER=${KIBANA_VER} \
-    KIBANA_URL="https://artifacts.elastic.co/downloads/kibana/kibana-${KIBANA_VER}-linux-x86_64.tar.gz" \
-    KIBANA_ASC_URL="https://artifacts.elastic.co/downloads/kibana/kibana-${KIBANA_VER}-linux-x86_64.tar.gz.asc" \
-    GPG_KEY="46095ACC8548582C1A2699A9D27D666CD88E42B4" \
     \
     PATH="/usr/share/kibana/bin:${PATH}"
 
@@ -23,14 +20,11 @@ RUN set -ex; \
     \
     # Download and verify kibana.
     cd /tmp; \
-    curl -o kibana.tar.gz -Lskj "${KIBANA_URL}"; \
-    curl -o kibana.tar.gz.asc -Lskj "${KIBANA_ASC_URL}"; \
-    export GNUPGHOME="$(mktemp -d)"; \
-    gpg --keyserver ha.pool.sks-keyservers.net --recv-keys "${GPG_KEY}"; \
-    gpg --batch --verify kibana.tar.gz.asc kibana.tar.gz; \
-    rm -r "${GNUPGHOME}" kibana.tar.gz.asc; \
+    kibana_url="https://artifacts.elastic.co/downloads/kibana/kibana-${KIBANA_VER}-linux-x86_64.tar.gz"; \
+    curl -o kibana.tar.gz -Lskj "${kibana_url}"; \
+    curl -o kibana.tar.gz.asc -Lskj "${kibana_url}.asc"; \
+    GPG_KEYS=46095ACC8548582C1A2699A9D27D666CD88E42B4 gpg-verify.sh /tmp/kibana.tar.gz.asc /tmp/kibana.tar.gz; \
     \
-    # Unpack.
     mkdir -p /usr/share/kibana/node/bin; \
     tar zxf kibana.tar.gz --strip-components=1 -C /usr/share/kibana; \
     ln -sf /usr/bin/node /usr/share/kibana/node/bin/node; \

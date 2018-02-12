@@ -17,26 +17,11 @@ script:
   - travis_retry make
   - make test
 
-after_success: |
-  if [[ "${TRAVIS_PULL_REQUEST}" == "false" && ("${TRAVIS_BRANCH}" == "master"  || -n "${TRAVIS_TAG}") ]]; then
-    docker login -u "${DOCKER_USERNAME}" -p "${DOCKER_PASSWORD}"
-
-    if [[ -n "${TRAVIS_TAG}" ]]; then
-      export STABILITY_TAG="${TRAVIS_TAG}"
-    fi
-
-    make release
-
-    if [[ -n "${EXTRA_TAG}" ]]; then
-      make release TAG="${EXTRA_TAG}"
-    fi
-
-    if [[ "${TAG}" == "${LATEST_TAG}" ]]; then
-      make release TAG="latest"
-    fi
-  fi
+after_success:
+  - bash "${TRAVIS_BUILD_DIR}/travis-release.sh"
 
 notifications:
   on_failure: never
   slack:
-    secure: "cLdBp+53W28wyE/av3QUEqsDl/GXmU+hEanfYKOQhXTaJvLcEIjFFFgUKg15aA/SuXxsIpFNBlwXocaMVnUTLjqFOk/+/j3SOhx6Gkol8FJ88nf/VIahwOW1qflCA+cjqCeH5K0Pth2w5ZsiL09l1mpSHmdqyBSbWAvWUTLvt4Hhk+QM3Rcr98TGe7YBUN7i9pJVpxhZNqu8ZnlOFXcbqzgpIlU9BQBibe1b7A7WltznCE5TRvR4qeVCr70a0m8rOhq8uID6P7gTXkFVAF4ZTCiG42G5YTrFhQHo4R2dDNKAgIWUdE0Ef0/Ro1dtQcuEbUhFOBvO5OlaUzsdKFE1cBalGsxEoDd4IC+keA5QHE2viIJrhv33LGvqNQYJDegyhQ7cajDRetDUx7Hw0xWxnzYBeHc9T6qBUOXy2cwcadQp92oF2iWNxrtvkl3xHKIzt51hBnd54w2M/1/lbFmXa1vKWrQLFyFHo8y8OpqgCsCiN6Oc5fPH9Cq4rP6pSjTWRdHCUiKwZPTtewdYAMX/jLnDtBgaVvxfJAI2wDuhTheWh16edmTj7N7vN5vH2pqMBzJb20oo9iV15WHtWAOT7M/0Gk9He7y1dsp5kRROj3NpwWfo+Hx7aGLI6zraUBFRlKg73Nf03ZZmy5gI+K5VOge/qAJNeLAkXsQPttaXGAg="
+    secure: |
+      cLdBp+53W28wyE/av3QUEqsDl/GXmU+hEanfYKOQhXTaJvLcEIjFFFgUKg15aA/SuXxsIpFNBlwXocaMVnUTLjqFOk/+/j3SOhx6Gkol8FJ88nf/VIahwOW1qflCA+cjqCeH5K0Pth2w5ZsiL09l1mpSHmdqyBSbWAvWUTLvt4Hhk+QM3Rcr98TGe7YBUN7i9pJVpxhZNqu8ZnlOFXcbqzgpIlU9BQBibe1b7A7WltznCE5TRvR4qeVCr70a0m8rOhq8uID6P7gTXkFVAF4ZTCiG42G5YTrFhQHo4R2dDNKAgIWUdE0Ef0/Ro1dtQcuEbUhFOBvO5OlaUzsdKFE1cBalGsxEoDd4IC+keA5QHE2viIJrhv33LGvqNQYJDegyhQ7cajDRetDUx7Hw0xWxnzYBeHc9T6qBUOXy2cwcadQp92oF2iWNxrtvkl3xHKIzt51hBnd54w2M/1/lbFmXa1vKWrQLFyFHo8y8OpqgCsCiN6Oc5fPH9Cq4rP6pSjTWRdHCUiKwZPTtewdYAMX/jLnDtBgaVvxfJAI2wDuhTheWh16edmTj7N7vN5vH2pqMBzJb20oo9iV15WHtWAOT7M/0Gk9He7y1dsp5kRROj3NpwWfo+Hx7aGLI6zraUBFRlKg73Nf03ZZmy5gI+K5VOge/qAJNeLAkXsQPttaXGAg=
