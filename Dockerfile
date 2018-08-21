@@ -23,7 +23,7 @@ RUN set -ex; \
     cd /tmp; \
     kibana_url="https://artifacts.elastic.co/downloads/kibana/kibana-oss-${KIBANA_VER}-linux-x86_64.tar.gz"; \
     # Since 6.3 kibana provides a separate OSS version without x-pack.
-    [[ $(compare_semver "6.3.0" "${KIBANA_VER}") == 0 ]] && es_url="${es_url/-oss/}"; \
+    [[ $(compare_semver "6.3.0" "${KIBANA_VER}") == 0 ]] && es_url="${kibana_url/-oss/}"; \
     curl -o kibana.tar.gz -Lskj "${kibana_url}"; \
     curl -o kibana.tar.gz.asc -Lskj "${kibana_url}.asc"; \
     GPG_KEYS=46095ACC8548582C1A2699A9D27D666CD88E42B4 gpg_verify /tmp/kibana.tar.gz.asc /tmp/kibana.tar.gz; \
