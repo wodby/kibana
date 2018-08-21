@@ -4,9 +4,10 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/wodby/kibana.svg)](https://hub.docker.com/r/wodby/kibana)
 [![Docker Stars](https://img.shields.io/docker/stars/wodby/kibana.svg)](https://hub.docker.com/r/wodby/kibana)
 [![Docker Layers](https://images.microbadger.com/badges/image/wodby/kibana.svg)](https://microbadger.com/images/wodby/kibana)
-[![Wodby Slack](http://slack.wodby.com/badge.svg)](http://slack.wodby.com)
 
 ## Docker Images
+
+❗For better reliability we release images with stability tags (`wodby/kibana:6-X.X.X`) which correspond to [git tags](https://github.com/wodby/kibana/releases). We strongly recommend using images only with stability tags. 
 
 * All images are based on Alpine Linux
 * Base image: [wodby/alpine](https://github.com/wodby/alpine)
@@ -15,14 +16,13 @@
 
 Supported tags and respective `Dockerfile` links:
 
-* `6`, `6.2`, `latest` [_(Dockerfile)_](https://github.com/wodby/kibana/tree/master/Dockerfile)
+* `6.3`, `6`, `latest` [_(Dockerfile)_](https://github.com/wodby/kibana/tree/master/Dockerfile)
+* `6.2` [_(Dockerfile)_](https://github.com/wodby/kibana/tree/master/Dockerfile)
 * `6.1` [_(Dockerfile)_](https://github.com/wodby/kibana/tree/master/Dockerfile)
 * `6.0` [_(Dockerfile)_](https://github.com/wodby/kibana/tree/master/Dockerfile)
-* `5`, `5.6` [_(Dockerfile)_](https://github.com/wodby/kibana/tree/master/Dockerfile)
+* `5.6`, `5` [_(Dockerfile)_](https://github.com/wodby/kibana/tree/master/Dockerfile)
 * `5.5` [_(Dockerfile)_](https://github.com/wodby/kibana/tree/master/Dockerfile)
 * `5.4` [_(Dockerfile)_](https://github.com/wodby/kibana/tree/master/Dockerfile)
-
-For better reliability we additionally release images with stability tags (`wodby/kibana:6-X.X.X`) which correspond to [git tags](https://github.com/wodby/kibana/releases). We **strongly recommend** using images only with stability tags. 
 
 ## Orchestration Actions
 

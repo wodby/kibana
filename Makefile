@@ -1,6 +1,7 @@
 -include env_make
 
-KIBANA_VER ?= 6.2.4
+KIBANA_VER ?= 6.3.2
+OPENJDK_VER ?= 8.171.11
 
 MINOR_VER=$(shell echo "${KIBANA_VER}" | grep -oE '^[0-9]+\.[0-9]+?')
 
@@ -20,10 +21,13 @@ NAME = kibana-$(KIBANA_VER)
 default: build
 
 build:
-	docker build -t $(REPO):$(TAG) --build-arg KIBANA_VER=$(KIBANA_VER) ./
+	docker build -t $(REPO):$(TAG) \
+		--build-arg OPENJDK_VER=$(OPENJDK_VER) \
+		--build-arg KIBANA_VER=$(KIBANA_VER) \
+		./
 
 test:
-	IMAGE=$(REPO):$(TAG) NAME=$(NAME) ES_VER=$(MINOR_VER) ./test.sh
+	cd ./tests && IMAGE=$(REPO):$(TAG) NAME=$(NAME) ES_VER=$(MINOR_VER) ./run.sh
 
 push:
 	docker push $(REPO):$(TAG)
