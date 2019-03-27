@@ -35,9 +35,15 @@ RUN set -ex; \
     apk add --no-cache -t .kibana-build-deps gnupg openssl; \
     \
     cd /usr/local/bin; \
-    wget -q https://raw.githubusercontent.com/wodby/alpine/master/bin/gpg_verify; \
-    wget -q https://raw.githubusercontent.com/wodby/alpine/master/bin/compare_semver; \
-    chmod +x gpg_verify compare_semver; \
+    for script in \
+        wait_for \
+        gpg_verify \
+        compare_semver \
+    ; do \
+        wget -q "https://raw.githubusercontent.com/wodby/alpine/master/bin/${script}"; \
+        chmod +x "${script}"; \
+    done; \
+    \
     cd /tmp; \
     kibana_url="https://artifacts.elastic.co/downloads/kibana/kibana-oss-${KIBANA_VER}-linux-x86_64.tar.gz"; \
     # Since 6.3 kibana provides a separate OSS version without x-pack.
