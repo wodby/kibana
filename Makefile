@@ -1,9 +1,9 @@
 -include env_make
 
 KIBANA_VER ?= 6.7.0
-OPENJDK_VER ?= 8.191.12
+NODEJS_VER ?= $(shell wget -qO- "https://raw.githubusercontent.com/elastic/kibana/v$(KIBANA_VER)/.node-version")
 
-MINOR_VER=$(shell echo "${KIBANA_VER}" | grep -oE '^[0-9]+\.[0-9]+?')
+MINOR_VER=$(shell echo "${KIBANA_VER}" | sed -E "s/^([0-9]+\.[0-9]+)\..*/\1/")
 
 TAG ?= $(MINOR_VER)
 
@@ -11,6 +11,10 @@ ifneq ($(STABILITY_TAG),)
     ifneq ($(TAG),latest)
         override TAG := $(TAG)-$(STABILITY_TAG)
     endif
+endif
+
+ifneq ($(BASE_IMAGE_STABILITY_TAG),)
+    BASE_IMAGE_TAG := $(BASE_IMAGE_TAG)-$(BASE_IMAGE_STABILITY_TAG)
 endif
 
 REPO = wodby/kibana
@@ -22,7 +26,7 @@ default: build
 
 build:
 	docker build -t $(REPO):$(TAG) \
-		--build-arg OPENJDK_VER=$(OPENJDK_VER) \
+		--build-arg NODEJS_VER=$(NODEJS_VER) \
 		--build-arg KIBANA_VER=$(KIBANA_VER) \
 		./
 
