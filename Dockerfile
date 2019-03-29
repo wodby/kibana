@@ -34,7 +34,7 @@ RUN set -ex; \
         make \
         openjdk8-jre; \
     \
-    apk add --no-cache -t .kibana-build-deps gnupg openssl; \
+    apk add --no-cache -t .kibana-build-deps gnupg openssl tar; \
     \
     cd /tmp; \
     kibana_url="https://artifacts.elastic.co/downloads/kibana/kibana-oss-${KIBANA_VER}-linux-x86_64.tar.gz"; \
