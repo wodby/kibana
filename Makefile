@@ -1,6 +1,6 @@
 -include env_make
 
-KIBANA_VER ?= 6.7.0
+KIBANA_VER ?= 6.7.1
 NODEJS_VER ?= $(shell wget -qO- "https://raw.githubusercontent.com/elastic/kibana/v$(KIBANA_VER)/.node-version")
 
 MINOR_VER=$(shell echo "${KIBANA_VER}" | sed -E "s/^([0-9]+\.[0-9]+)\..*/\1/")
