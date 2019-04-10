@@ -1,11 +1,11 @@
 -include env_make
 
 KIBANA_VER ?= 6.7.0
+KIBANA_VER_MINOR=$(shell echo "${KIBANA_VER}" | grep -oE '^[0-9]+\.[0-9]+')
+
 NODEJS_VER ?= $(shell wget -qO- "https://raw.githubusercontent.com/elastic/kibana/v$(KIBANA_VER)/.node-version")
 
-MINOR_VER=$(shell echo "${KIBANA_VER}" | sed -E "s/^([0-9]+\.[0-9]+)\..*/\1/")
-
-TAG ?= $(MINOR_VER)
+TAG ?= $(KIBANA_VER_MINOR)
 
 ifneq ($(STABILITY_TAG),)
     ifneq ($(TAG),latest)
@@ -31,7 +31,7 @@ build:
 		./
 
 test:
-	cd ./tests && IMAGE=$(REPO):$(TAG) NAME=$(NAME) ES_VER=$(MINOR_VER) ./run.sh
+	cd ./tests && IMAGE=$(REPO):$(TAG) NAME=$(NAME) ES_VER=$(KIBANA_VER_MINOR) ./run.sh
 
 push:
 	docker push $(REPO):$(TAG)
