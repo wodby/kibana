@@ -5,12 +5,19 @@ services:
 
 env:
   matrix:
-    - KIBANA_VER=6.7.1 TAGS=6.7,6,latest
-    - KIBANA_VER=5.6.16 TAGS=5.6,5
+  - KIBANA_VER=6.7.1 TAGS=6.7,6,latest
+  - KIBANA_VER=5.6.16 TAGS=5.6,5
 
 script:
-  - travis_retry make
-  - make test
+- travis_retry make
+- make test
 
 after_success:
-  - . "${TRAVIS_BUILD_DIR}/release.sh"
+- . "${TRAVIS_BUILD_DIR}/release.sh"
+
+notifications:
+  email:
+    recipients:
+    - travisci@wodby.com
+    on_success: never
+    on_failure: always
