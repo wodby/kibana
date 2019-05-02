@@ -5,7 +5,7 @@ services:
 
 env:
   matrix:
-  - KIBANA_VER=6.7.1 TAGS=6.7,6,latest
+  - KIBANA_VER=6.7.2 TAGS=6.7,6,latest
   - KIBANA_VER=5.6.16 TAGS=5.6,5
 
 script:
