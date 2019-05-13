@@ -16,8 +16,8 @@
 
 Supported tags and respective `Dockerfile` links:
 
-* `6.7`, `6`, `latest` [_(Dockerfile)_](https://github.com/wodby/kibana/tree/master/Dockerfile)
-* `5.6`, `5` [_(Dockerfile)_](https://github.com/wodby/kibana/tree/master/Dockerfile)
+* `7.0`, `7`, `latest` [_(Dockerfile)_](https://github.com/wodby/kibana/tree/master/Dockerfile)
+* `6.7`, `6` [_(Dockerfile)_](https://github.com/wodby/kibana/tree/master/Dockerfile)
 
 ## Orchestration Actions
 
