@@ -32,9 +32,13 @@ RUN set -ex; \
         bash \
         curl \
         make \
-        openjdk8-jre; \
+        openjdk8-jre \
+        sed; \
     \
     apk add --no-cache -t .kibana-build-deps gnupg openssl tar; \
+    \
+    gotpl_url="https://github.com/wodby/gotpl/releases/download/0.1.5/gotpl-alpine-linux-amd64-0.1.5.tar.gz"; \
+    wget -qO- "${gotpl_url}" | tar xz -C /usr/local/bin; \
     \
     cd /tmp; \
     kibana_url="https://artifacts.elastic.co/downloads/kibana/kibana-oss-${KIBANA_VER}-linux-x86_64.tar.gz"; \
@@ -47,6 +51,10 @@ RUN set -ex; \
     ln -sf /usr/bin/node /usr/share/kibana/node/bin/node; \
     chown -R kibana:kibana /usr/share/kibana; \
     \
+    # Modify script to support custom node location.
+    # https://discuss.elastic.co/t/kibana-7-0-node-binary-location/180793
+    sed -i -E 's/(test -x "\$NODE"$)/\1 || NODE=$(which node)/' /usr/share/kibana/bin/kibana; \
+    \
     apk del --purge .kibana-build-deps; \
     rm -rf /tmp/*; \
     rm -rf /var/cache/apk/*
@@ -55,7 +63,7 @@ USER 1000
 
 WORKDIR /usr/share/kibana
 
-COPY config /usr/share/kibana/config/
+COPY templates /etc/gotpl
 
 EXPOSE 5601
 

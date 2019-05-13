@@ -19,6 +19,14 @@ Supported tags and respective `Dockerfile` links:
 * `7.0`, `7`, `latest` [_(Dockerfile)_](https://github.com/wodby/kibana/tree/master/Dockerfile)
 * `6.7`, `6` [_(Dockerfile)_](https://github.com/wodby/kibana/tree/master/Dockerfile)
 
+## Environment Variables
+
+| Variable                     | Default Value               | Description |
+| ---------------------------- | --------------------------- | ----------- |
+| `KIBANA_SERVER_NAME`         | `kibana`                    |             |
+| `KIBANA_SERVER_HOST`         | `0`                         |             |
+| `KIBANA_ELASTICSEARCH_HOSTS` | `http://elasticsearch:9200` |             |
+
 ## Orchestration Actions
 
 Usage:
