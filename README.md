@@ -10,7 +10,7 @@
 ❗For better reliability we release images with stability tags (`wodby/kibana:6-X.X.X`) which correspond to [git tags](https://github.com/wodby/kibana/releases). We strongly recommend using images only with stability tags. 
 
 * All images are based on Alpine Linux
-* Base image: [wodby/alpine](https://github.com/wodby/alpine)
+* Base image: [node](https://hub.docker.com/_/node)
 * [TravisCI builds](https://travis-ci.org/wodby/kibana) 
 * [Docker Hub](https://hub.docker.com/r/wodby/kibana)
 
