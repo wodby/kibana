@@ -6,7 +6,7 @@ services:
 env:
   matrix:
   - KIBANA_VER=7.3.1 TAGS=7.3,7,latest
-  - KIBANA_VER=6.8.2 TAGS=6.8,6
+  - KIBANA_VER=6.8.3 TAGS=6.8,6
 
 script:
 - travis_retry make
