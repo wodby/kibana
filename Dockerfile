@@ -31,7 +31,9 @@ RUN set -ex; \
     apk add --update --no-cache -t .kibana-rundeps \
         bash \
         curl \
+        expat \
         libc6-compat \
+        libuuid \
         make \
         openjdk8-jre \
         sed; \

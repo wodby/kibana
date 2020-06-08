@@ -11,4 +11,4 @@ services:
   kibana:
     image: $IMAGE
     depends_on:
-      - elasticsearch
+    - elasticsearch
