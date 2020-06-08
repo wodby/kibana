@@ -30,13 +30,17 @@ RUN set -ex; \
     \
     apk add --update --no-cache -t .kibana-rundeps \
         bash \
+        ca-certificates \
+        chromium \
         curl \
-        expat \
-        libc6-compat \
-        libuuid \
+        freetype \
+        freetype-dev \
+        harfbuzz \
         make \
+        nss \
         openjdk8-jre \
-        sed; \
+        sed \
+        ttf-freefont; \
     \
     apk add --no-cache -t .kibana-build-deps gnupg openssl tar; \
     \

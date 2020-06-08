@@ -4,3 +4,4 @@
 server.name: {{ getenv "KIBANA_SERVER_NAME" "kibana" }}
 server.host: "{{ getenv "KIBANA_SERVER_HOST" "0" }}"
 elasticsearch.hosts: {{ getenv "KIBANA_ELASTICSEARCH_HOSTS" "http://elasticsearch:9200" }}
+xpack.reporting.kibanaServer.hostname: 0.0.0.0
