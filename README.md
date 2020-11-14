@@ -1,6 +1,6 @@
 # Kibana Docker Container Image
 
-[![Build Status](https://travis-ci.org/wodby/kibana.svg?branch=master)](https://travis-ci.org/wodby/kibana)
+[![Build Status](https://github.com/wodby/kibana/workflows/Build%20docker%20image/badge.svg)](https://github.com/wodby/kibana/actions)
 [![Docker Pulls](https://img.shields.io/docker/pulls/wodby/kibana.svg)](https://hub.docker.com/r/wodby/kibana)
 [![Docker Stars](https://img.shields.io/docker/stars/wodby/kibana.svg)](https://hub.docker.com/r/wodby/kibana)
 [![Docker Layers](https://images.microbadger.com/badges/image/wodby/kibana.svg)](https://microbadger.com/images/wodby/kibana)
@@ -9,15 +9,15 @@
 
 ❗For better reliability we release images with stability tags (`wodby/kibana:6-X.X.X`) which correspond to [git tags](https://github.com/wodby/kibana/releases). We strongly recommend using images only with stability tags. 
 
-* All images are based on Alpine Linux
-* Base image: [node](https://hub.docker.com/_/node)
-* [TravisCI builds](https://travis-ci.org/wodby/kibana) 
-* [Docker Hub](https://hub.docker.com/r/wodby/kibana)
+- All images based on Alpine Linux
+- Base image: [node](https://hub.docker.com/_/node)
+- [GitHub actions builds](https://github.com/wodby/kibana/actions) 
+- [Docker Hub](https://hub.docker.com/r/wodby/kibana)
 
 Supported tags and respective `Dockerfile` links:
 
-* `7.10`, `7`, `latest` [_(Dockerfile)_](https://github.com/wodby/kibana/tree/master/Dockerfile)
-* `6.8`, `6` [_(Dockerfile)_](https://github.com/wodby/kibana/tree/master/Dockerfile)
+- `7.10`, `7`, `latest` [_(Dockerfile)_](https://github.com/wodby/kibana/tree/master/Dockerfile)
+- `6.8`, `6` [_(Dockerfile)_](https://github.com/wodby/kibana/tree/master/Dockerfile)
 
 ## Environment Variables
 
