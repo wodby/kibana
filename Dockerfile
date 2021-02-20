@@ -42,6 +42,8 @@ RUN set -ex; \
         sed \
         ttf-freefont; \
     \
+    apk add -U --no-cache -t .kibana-edge-run-deps -X http://dl-cdn.alpinelinux.org/alpine/edge/main libc6-compat; \
+    \
     apk add --no-cache -t .kibana-build-deps gnupg openssl tar; \
     \
     gotpl_url="https://github.com/wodby/gotpl/releases/download/0.1.5/gotpl-alpine-linux-amd64-0.1.5.tar.gz"; \
