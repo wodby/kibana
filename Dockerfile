@@ -42,7 +42,8 @@ RUN set -ex; \
         sed \
         ttf-freefont; \
     \
-    apk add -U --no-cache -t .kibana-edge-run-deps -X http://dl-cdn.alpinelinux.org/alpine/edge/community gcompat; \
+    apk add -U --no-cache -t .kibana-edge-run-deps -X http://dl-cdn.alpinelinux.org/alpine/edge/main libc6-compat; \
+    ln -s /lib64/ld-linux-x86-64.so.2 /lib/ld-linux-x86-64.so.2; \
     \
     apk add --no-cache -t .kibana-build-deps gnupg openssl tar; \
     \
