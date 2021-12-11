@@ -38,7 +38,7 @@ RUN set -ex; \
         harfbuzz \
         make \
         nss \
-        openjdk8-jre \
+        openjdk11-jre \
         sed \
         ttf-freefont; \
     \
