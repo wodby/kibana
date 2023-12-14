@@ -3,11 +3,10 @@
 [![Build Status](https://github.com/wodby/kibana/workflows/Build%20docker%20image/badge.svg)](https://github.com/wodby/kibana/actions)
 [![Docker Pulls](https://img.shields.io/docker/pulls/wodby/kibana.svg)](https://hub.docker.com/r/wodby/kibana)
 [![Docker Stars](https://img.shields.io/docker/stars/wodby/kibana.svg)](https://hub.docker.com/r/wodby/kibana)
-[![Docker Layers](https://images.microbadger.com/badges/image/wodby/kibana.svg)](https://microbadger.com/images/wodby/kibana)
 
 ## Docker Images
 
-❗For better reliability we release images with stability tags (`wodby/kibana:6-X.X.X`) which correspond to [git tags](https://github.com/wodby/kibana/releases). We strongly recommend using images only with stability tags. 
+❗For better reliability we release images with stability tags (`wodby/kibana:7-X.X.X`) which correspond to [git tags](https://github.com/wodby/kibana/releases). We strongly recommend using images only with stability tags. 
 
 - All images based on Alpine Linux
 - Base image: [node](https://hub.docker.com/_/node)
