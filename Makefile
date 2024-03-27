@@ -1,6 +1,6 @@
 -include env_make
 
-KIBANA_VER ?= 7.17.18
+KIBANA_VER ?= 7.17.19
 KIBANA_VER_MINOR=$(shell echo "${KIBANA_VER}" | grep -oE '^[0-9]+\.[0-9]+')
 
 NODEJS_VER ?= $(shell wget -qO- "https://raw.githubusercontent.com/elastic/kibana/v$(KIBANA_VER)/.node-version")
