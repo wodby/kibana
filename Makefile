@@ -53,6 +53,6 @@ logs:
 
 clean:
 	-docker rm -f $(NAME)
-	-IMAGE=$(REPO):$(TAG) ES_VER=$(KIBANA_VER_MINOR) docker-compose -f tests/docker-compose.yml down -v
+	-IMAGE=$(REPO):$(TAG) ES_VER=$(KIBANA_VER_MINOR) docker compose -f tests/compose.yml down -v
 
 release: build push
