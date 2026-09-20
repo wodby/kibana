@@ -1,5 +1,9 @@
 -include env_make
 
+# Accept legacy build arguments during the image revision transition.
+BASE_IMAGE_REVISION ?= $(BASE_IMAGE_STABILITY_TAG)
+IMAGE_REVISION ?= $(STABILITY_TAG)
+
 KIBANA_VER ?= 7.17.29
 KIBANA_VER_MINOR=$(shell echo "${KIBANA_VER}" | grep -oE '^[0-9]+\.[0-9]+')
 
@@ -7,14 +11,16 @@ NODEJS_VER ?= $(shell wget -qO- "https://raw.githubusercontent.com/elastic/kiban
 
 TAG ?= $(KIBANA_VER_MINOR)
 
-ifneq ($(STABILITY_TAG),)
+ifneq ($(IMAGE_REVISION),)
     ifneq ($(TAG),latest)
-        override TAG := $(TAG)-$(STABILITY_TAG)
+        override TAG := $(TAG)-$(IMAGE_REVISION)
+    else
+        override TAG := $(IMAGE_REVISION)
     endif
 endif
 
-ifneq ($(BASE_IMAGE_STABILITY_TAG),)
-    BASE_IMAGE_TAG := $(BASE_IMAGE_TAG)-$(BASE_IMAGE_STABILITY_TAG)
+ifneq ($(BASE_IMAGE_REVISION),)
+    BASE_IMAGE_TAG := $(BASE_IMAGE_TAG)-$(BASE_IMAGE_REVISION)
 endif
 
 REPO = wodby/kibana
